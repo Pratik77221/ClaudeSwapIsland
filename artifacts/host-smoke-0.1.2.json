@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "version": "1.141.0",
+  "cliVersion": "cswap 0.26.0",
+  "accountCount": 1,
+  "launchFile": "C:\\Users\\manep\\AppData\\Roaming\\uv\\tools\\claude-swap\\Scripts\\python.exe",
+  "checks": [
+    "live CLI inside VS Code host",
+    "live account list",
+    "activation",
+    "commands",
+    "activity bar contribution",
+    "sidebar provider",
+    "dock provider",
+    "editor dashboard"
+  ],
+  "note": "Read-only live cswap list; no account mutation."
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "version": "1.141.0",
+  "checks": [
+    "activation",
+    "commands",
+    "activity bar contribution",
+    "sidebar provider",
+    "dock provider",
+    "editor dashboard"
+  ],
+  "note": "Read-only live cswap list; no account mutation."
+}

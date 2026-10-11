@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "version": "1.141.0",
+  "checks": [
+    "activation",
+    "commands",
+    "dock provider",
+    "editor dashboard"
+  ],
+  "note": "Read-only live cswap list; no account mutation."
+}

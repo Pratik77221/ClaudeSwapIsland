@@ -1,0 +1,150 @@
+{
+  "name": "claude-swap-island",
+  "displayName": "Claude Island",
+  "description": "Independent Claude account switching with an island dock and encrypted account storage.",
+  "version": "0.2.2",
+  "publisher": "manep-local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "extensionKind": [
+    "ui"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "swapIsland.sidebar",
+        "title": "Open Island",
+        "category": "Claude Island",
+        "icon": "$(account)"
+      },
+      {
+        "command": "swapIsland.open",
+        "title": "Open Dock",
+        "category": "Claude Island",
+        "icon": "$(account)"
+      },
+      {
+        "command": "swapIsland.expand",
+        "title": "Open Dashboard",
+        "category": "Claude Island",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "swapIsland.refresh",
+        "title": "Refresh Accounts",
+        "category": "Claude Island",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "swapIsland.switch",
+        "title": "Switch Account",
+        "category": "Claude Island"
+      },
+      {
+        "command": "swapIsland.add",
+        "title": "Save Current Claude Login",
+        "category": "Claude Island",
+        "icon": "$(add)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "swapIslandSidebar",
+          "title": "Claude Island",
+          "icon": "media/island.svg"
+        }
+      ],
+      "panel": [
+        {
+          "id": "swapIsland",
+          "title": "Claude Island",
+          "icon": "media/island.svg"
+        }
+      ]
+    },
+    "views": {
+      "swapIslandSidebar": [
+        {
+          "type": "webview",
+          "id": "swapIsland.accounts",
+          "name": "Accounts",
+          "visibility": "visible"
+        }
+      ],
+      "swapIsland": [
+        {
+          "type": "webview",
+          "id": "swapIsland.dock",
+          "name": "Account Dock"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "swapIsland.refresh",
+          "when": "view == swapIsland.dock || view == swapIsland.accounts",
+          "group": "navigation"
+        },
+        {
+          "command": "swapIsland.expand",
+          "when": "view == swapIsland.dock || view == swapIsland.accounts",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Claude Island",
+      "properties": {
+        "swapIsland.refreshSeconds": {
+          "type": "number",
+          "default": 180,
+          "minimum": 0,
+          "maximum": 600,
+          "scope": "application",
+          "description": "Seconds between silent usage checks while the dock is visible (minimum 60). Set 0 for manual refresh only. Auto-switch checks every minute when enabled."
+        },
+        "swapIsland.autoThreshold": {
+          "type": "number",
+          "default": 90,
+          "minimum": 1,
+          "maximum": 100,
+          "scope": "application",
+          "description": "Usage percentage that triggers auto-switching when enabled in the dock."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "check": "node --check src/extension.js && node --check src/backend.js && node --check media/main.js",
+    "test": "node --test test/*.test.js",
+    "test:ui": "node test/ui.cjs",
+    "package": "vsce package --allow-missing-repository --no-dependencies",
+    "build": "esbuild src/extension.js --bundle --platform=node --target=node20 --external:vscode --outfile=dist/extension.js",
+    "vscode:prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^4.0.0",
+    "esbuild": "^0.28.2",
+    "playwright": "^1.55.0"
+  },
+  "dependencies": {
+    "proper-lockfile": "^4.1.2"
+  }
+}

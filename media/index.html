@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{csp}}; script-src 'nonce-{{nonce}}'; img-src {{csp}} data:;">
+  <link rel="stylesheet" href="{{css}}">
+  <title>Claude Island</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="topline"><span class="wordmark"><span class="brand-symbol">✳</span> claude <b>island</b></span><div class="tools"><span class="local-badge">LOCAL CONNECTION</span><button class="icon-button" id="expand" title="Open full dashboard" aria-label="Open full dashboard">↗</button><button class="icon-button" id="settings" title="Settings" aria-label="Settings">⚙</button></div></header>
+    <section class="island" aria-label="Active account">
+      <div class="orb" aria-hidden="true">✳</div>
+      <div class="island-copy"><span class="eyebrow" id="connection">CONNECTING</span><h1 id="active-name">Your coding, uninterrupted.</h1><p id="active-detail">Bringing your Claude accounts together.</p></div>
+      <div class="mini-usage"><span class="pulse-dot"></span><span id="island-quota">—</span><small>5h used</small></div>
+      <button class="collapse-button" id="collapse" aria-label="Collapse account list" aria-expanded="true">⌃</button>
+    </section>
+    <div id="details">
+      <div class="section-heading"><div><h2>Your accounts <span id="account-count">0</span></h2><p>Different accounts. One smooth workflow.</p></div><button id="refresh" class="icon-button" aria-label="Refresh accounts" title="Refresh accounts">↻</button></div>
+      <div id="accounts" class="accounts" aria-label="Saved accounts"></div>
+      <section class="empty" id="empty" hidden><div class="empty-icon">＋</div><h2>Make yourself at home.</h2><p>Sign in to Claude Code, then save your current login to start your island.</p></section>
+      <div class="bottom-row"><button class="add-button" id="add"><span>＋</span> Save current login</button><button class="text-button" id="help">Adding another account? ↗</button></div>
+      <footer class="automation"><div class="auto-icon">ϟ</div><div class="auto-copy"><strong>Stay in your flow</strong><p id="auto-description">Auto-switch before you hit your limit.</p></div><span id="threshold" class="threshold">90%</span><button id="auto" class="toggle" role="switch" aria-checked="false" aria-label="Automatic account switching"><span></span></button></footer>
+    </div>
+    <div class="footnote"><span><i></i> Native · encrypted storage</span><span id="last-update">Connecting…</span></div>
+  </main>
+  <div id="feedback" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+  <script nonce="{{nonce}}" src="{{js}}"></script>
+</body>
+</html>
